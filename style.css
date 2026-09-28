@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  user-select: none;
+  touch-action: manipulation;
+}
+
+/* Transição Suave nos Botões de Opção com Deslize */
+#options-container button {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#options-container button:hover:not(:disabled) {
+  transform: translateX(6px);
+}
+
+/* Efeito Glow nos Botões Principais */
+.btn-glow {
+  transition: all 0.3s ease;
+}
+
+.btn-glow:hover:not(:disabled) {
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+}
+
+/* Animação de Entrada das Perguntas (Slide & Fade) */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide {
+  animation: slideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Animação de Tremor ao Errar (Shake Error) */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+.shake-error {
+  animation: shake 0.4s ease-in-out;
+}
+
+/* Animação ao Perder Vida */
+@keyframes heartLose {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(0.85); }
+}
+
+.opacity-20 {
+  animation: heartLose 0.3s ease-out forwards;
+}
+
+/* Animação Pulsante para Tempo Crítico (Últimos 10s) */
+@keyframes pulseDanger {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 12px 2px rgba(244, 63, 94, 0.6);
+  }
+}
+
+.animate-pulse {
+  animation: pulseDanger 1s infinite ease-in-out;
+}
+
+/* Ocultar Alternativas no 50:50 */
+.option-hidden {
+  opacity: 0.15;
+  pointer-events: none;
+  filter: grayscale(100%);
+  transform: scale(0.97);
+}
+
+/* Scrollbar Personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #022c22;
+}
+::-webkit-scrollbar-thumb {
+  background: #065f46;
+  border-radius: 4px;
+}
